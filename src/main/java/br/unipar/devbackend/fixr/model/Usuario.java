@@ -1,12 +1,14 @@
 package br.unipar.devbackend.fixr.model;
 
+import java.time.LocalDate;
+
 public class Usuario {
     private Integer id;
     private String nome;
     private String email;
     private String senhaHash;
     private UserType userType;;
-    private DateTime dataCadastro;
+    private LocalDate dataCadastro;
 
     public void login(){
 
