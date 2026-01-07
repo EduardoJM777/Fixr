@@ -1,8 +1,10 @@
 package br.unipar.devbackend.fixr.model;
 
+import java.time.LocalDate;
+
 public class Acordos {
     private Integer id;
-    private Datetime data_servico;
+    private LocalDate data_servico;
     private StatusAcordo statusAcordo;
     private Double valor;
     private Chats chats;
