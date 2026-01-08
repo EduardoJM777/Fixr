@@ -10,24 +10,30 @@ import java.util.List;
 @Service
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioRepository repository;
 
     @Autowired
-    public UsuarioService(UsuarioRepository repository) {this.usuarioRepository = repository;}
+    public UsuarioService(UsuarioRepository repository) {this.repository = repository;}
 
     public Usuario salvar(Usuario usuario){
-        return usuarioRepository.save(usuario);
+        return repository.save(usuario);
     }
 
     public List<Usuario> listar(){
-        return usuarioRepository.findAll();
+        return repository.findAll();
+    }
+
+    public Usuario buscarPorId(Long id){
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("Não encontrado"));
     }
 
     public Usuario atualizar(Long id, Usuario usuarioAtualizado){
-        return usuarioRepository.findById(id).map(Usuario usuario -> {
-            usuario.setNome(usuarioAtualizado.getNome());
-
-        })
+        return repository.findById(id).map(usuario -> {
+            usuarioAtualizado.setNome(usuario.getNome());
+            usuarioAtualizado.setEmail(usuario.getEmail());
+            usuarioAtualizado.setUserType(usuario.getUserType());
+            return repository.save(usuario);
+        }).orElseThrow (() -> new RuntimeException("Erro"));
     }
 
 
