@@ -11,5 +11,5 @@ public enum Profissao {
     ENCANADOR,
     METALURGICO,
     NUTRICIONAISTA,
-    OUTROS;
+    OUTROS
 }
