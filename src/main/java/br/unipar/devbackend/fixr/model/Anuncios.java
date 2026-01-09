@@ -13,7 +13,6 @@ public class Anuncios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Cliente cliente;
     private String titulo;
     private String descricao;
     private LocalDate dataPublicacao;
@@ -24,20 +23,7 @@ public class Anuncios {
     @Enumerated(EnumType.STRING)
     private Profissao profissao;
 
-    public void publicar(){
-
-    }
-
-    public void pausar(){
-
-    }
-
-    public void cancelar(){
-
-    }
-
-    public void marcarComoConcluido(){
-
-    }
+    @ManyToOne
+    private Cliente cliente;
 
 }

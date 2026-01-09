@@ -1,4 +1,4 @@
-package br.unipar.devbackend.fixr.Service;
+package br.unipar.devbackend.fixr.service;
 
 import br.unipar.devbackend.fixr.Repository.UsuarioRepository;
 import br.unipar.devbackend.fixr.model.Usuario;
@@ -29,12 +29,15 @@ public class UsuarioService {
 
     public Usuario atualizar(Long id, Usuario usuarioAtualizado){
         return repository.findById(id).map(usuario -> {
-            usuarioAtualizado.setNome(usuario.getNome());
-            usuarioAtualizado.setEmail(usuario.getEmail());
-            usuarioAtualizado.setUserType(usuario.getUserType());
+            usuario.setNome(usuarioAtualizado.getNome());
+            usuario.setEmail(usuarioAtualizado.getEmail());
+            usuario.setUserType(usuarioAtualizado.getUserType());
             return repository.save(usuario);
         }).orElseThrow (() -> new RuntimeException("Erro"));
     }
 
+    public void apagar(Long id){
+       repository.deleteById(id);
+    }
 
 }

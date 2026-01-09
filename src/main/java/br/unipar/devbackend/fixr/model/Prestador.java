@@ -12,10 +12,4 @@ public class Prestador extends Usuario{
     @Enumerated(EnumType.STRING)
     private Profissao profissao;
 
-    public void procurarAnuncio(){
-
-    }
-    public void cadastrarNovaProfissao(){
-
-    }
 }

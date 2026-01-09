@@ -2,11 +2,11 @@ package br.unipar.devbackend.fixr.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
+//@table
 public class Usuario {
 
     @Id
@@ -16,28 +16,9 @@ public class Usuario {
     private String nome;
     private String email;
     private String senhaHash;
-    private LocalDate dataCadastro;
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    public void login(){
-
-    }
-
-    public void editarPerfil(){
-
-    }
-
-    public void excluirConta(){
-
-    }
-
-    public void adicionarContato(){
-
-    }
-
-    public void avaliar(){
-
-    }
 }

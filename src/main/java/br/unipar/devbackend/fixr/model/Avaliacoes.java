@@ -1,9 +1,6 @@
 package br.unipar.devbackend.fixr.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -16,10 +13,15 @@ public class Avaliacoes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Cliente cliente;
-    private Prestador prestador;
     private Double nota;
     private String comentario;
     private LocalDate data;
     private String sugest_melhoria;
+
+    @ManyToOne
+    private Cliente cliente;
+
+    @ManyToOne
+    private Prestador prestador;
+
 }

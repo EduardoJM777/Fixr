@@ -15,26 +15,13 @@ public class Acordos {
 
     private LocalDate data_servico;
     private Double valor;
-    private Chats chats;
     private Double valor2;
 
     @Enumerated(EnumType.STRING)
     private StatusAcordo statusAcordo;
 
-    public void confirmarAcordo(){
+    @OneToOne
+    private Chats chats;
 
-    }
-
-    public void finalizarServico(){
-
-    }
-
-    public void cancelarAcordo(){
-
-    }
-
-    public void enviarProposta(){
-
-    }
 
 }

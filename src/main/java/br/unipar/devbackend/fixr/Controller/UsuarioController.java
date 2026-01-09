@@ -1,6 +1,6 @@
 package br.unipar.devbackend.fixr.Controller;
 
-import br.unipar.devbackend.fixr.Service.UsuarioService;
+import br.unipar.devbackend.fixr.service.UsuarioService;
 import br.unipar.devbackend.fixr.model.Usuario;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +20,19 @@ public class UsuarioController {
     @PostMapping
     public Usuario cadastrar(@RequestBody Usuario usuario){return usuarioService.salvar(usuario);}
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuario)
     { return usuarioService.atualizar(id, usuario);}
 
     @GetMapping
     public List<Usuario> listar(){return usuarioService.listar();}
 
-    @GetMapping("/id")
-    public Usuario buscarPorId(long id){return usuarioService.buscarPorId(id);}
+    @GetMapping("/{id}")
+    public Usuario buscarPorId(@PathVariable Long id){return usuarioService.buscarPorId(id);}
+
+    @DeleteMapping("/{id}")
+    public void apagarUsuario(@PathVariable Long id){
+        usuarioService.apagar(id);
+    }
 
 }
